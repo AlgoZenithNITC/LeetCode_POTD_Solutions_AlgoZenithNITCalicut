@@ -1,0 +1,32 @@
+
+class Solution(object):
+    def solve(self, i, books, width, height, memo):
+        maxHeight = max(height, books[i][1])
+
+        if i == len(books) - 1:
+            if books[i][0] <= width:
+                return maxHeight
+            return height + books[i][1]
+
+        if memo[i][width] != -1:
+            return memo[i][width]
+
+        f_shelf = float('inf')
+        if books[i][0] <= width:
+            f_shelf = self.solve(i + 1, books, width - books[i][0], maxHeight, memo)
+
+        s_shelf = height + self.solve(i + 1, books, self.n_width - books[i][0], books[i][1], memo)
+
+        memo[i][width] = min(f_shelf, s_shelf)
+        return memo[i][width]
+
+    def minHeightShelves(self, books, shelfWidth):
+        """
+        :type books: List[List[int]]
+        :type shelfWidth: int
+        :rtype: int
+        """
+        self.n_width = shelfWidth
+        n = len(books)
+        memo = [[-1] * (shelfWidth + 1) for _ in range(n)]
+        return self.solve(0, books, shelfWidth, 0, memo)
