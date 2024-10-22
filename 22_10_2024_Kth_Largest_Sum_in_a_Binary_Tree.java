@@ -9,7 +9,7 @@ class Solution {
         Collections.sort(sums, Collections.reverseOrder()); // Sort in descending order
 
         if (k > sums.size()) {
-            return 0; // or some indication of invalid input
+            return -1; // or some indication of invalid input
         }
 
         return sums.get(k - 1); // k-th largest means (k-1) in 0-based index
