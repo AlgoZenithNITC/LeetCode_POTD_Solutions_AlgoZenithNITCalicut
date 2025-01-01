@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int count1(string s,int j){
+        int c=0;
+        for(int i=0;i<=j;i++){
+            if(s[i]=='0'){
+                c++;
+            }
+        }
+        return c;
+    }
+    int count2(string s,int j){
+        int c=0;
+        for(int i=j;i<s.size();i++){
+            if(s[i]=='1'){
+                c++;
+            }
+        }
+        return c;
+    }
+    int maxScore(string s) {
+        int max=0;
+        for(int i=0;i<s.size()-1;i++){
+            if(max<count1(s,i)+count2(s,i+1)){
+                max=count1(s,i)+count2(s,i+1);
+            }
+        }
+        return max;
+    }
+};
