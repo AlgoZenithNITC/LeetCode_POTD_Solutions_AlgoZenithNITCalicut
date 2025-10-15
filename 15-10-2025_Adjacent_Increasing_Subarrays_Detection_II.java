@@ -1,11 +1,11 @@
 class Solution {
-    public int maxIncreasingSubarrays(int[] nums) {
-        int n = nums.length;
+    public int maxIncreasingSubarrays(List<Integer> nums) {
+        int n = nums.size();
         int cnt = 1, prev = 0;
         int max = 0;
 
         for (int i = 1; i < n; ++i) {
-            if (nums[i] > nums[i - 1]) {
+            if (nums.get(i) > nums.get(i-1)) {
                 cnt++;
             } else {
                 prev = cnt;
