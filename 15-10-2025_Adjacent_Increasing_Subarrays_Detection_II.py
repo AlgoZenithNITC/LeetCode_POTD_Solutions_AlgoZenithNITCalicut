@@ -1,5 +1,5 @@
 class Solution:
-    def maxIncreasingSubarrays(self, nums):
+    def maxIncreasingSubarrays(self, nums: List[int]) -> int:
         n = len(nums)
         cnt = 1
         prev = 0
